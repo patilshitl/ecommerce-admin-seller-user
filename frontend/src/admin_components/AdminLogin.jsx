@@ -5,15 +5,15 @@ import { useNavigate } from 'react-router-dom';
 
 function Admin_login() {
     const navigate = useNavigate();
-    const [usename, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handelSubmit = async (e) => {
         e.preventDefault();
 
         try{
             const res = await axios.post(
-                "http://localhost:5173/admin/login",
+                "http://localhost:3000/admin/login",
                 {
                     username,
                     password
@@ -21,7 +21,7 @@ function Admin_login() {
             );
 
             if(res.data.success){
-                navigate("admin/dashboard");
+                navigate("/admin/dashboard");
             }
             else{
                 alert("Invalid username or password");
@@ -52,8 +52,8 @@ function Admin_login() {
                 type="text" 
                 className="form-control p-2" 
                 id="userInput" 
-                placeholder="username" name='username'
-                required onChange={(e)=> setUsername(e.target.vale)}
+                placeholder="username" name='username' value={username}
+                required onChange={(e)=> setUsername(e.target.value)}
               />
             </div>
             
@@ -63,7 +63,7 @@ function Admin_login() {
               <input 
                 type="password" 
                 className="form-control p-2" 
-                id="passwordInput" name='password'
+                id="passwordInput" name='password' value={password}
                 required onChange={(e)=> setPassword(e.target.value)}
               />
             </div>
