@@ -7,6 +7,8 @@ import {Routes, Route} from 'react-router-dom'
 import AdminDashboard from './admin_components/AdminDashboard'
 import AdminOrdersList from './admin_components/AdminOrdersList'
 import AdminProductsTable from './admin_components/AdminProductsTable'
+import SellerLogin from './seller_components/SellerLogin'
+import SellerRegister from './seller_components/SellerRegister'
 
 
 function App() {
@@ -24,6 +26,9 @@ function App() {
           <Route path="products" element={<AdminProductsTable />} />
           <Route path="orders" element={<AdminOrdersList />} />
         </Route>
+
+        <Route path='/seller/login' element={<SellerLogin />}/>
+        <Route path='/seller/register' element={<SellerRegister />} />
       </Routes>
     </>
   )

@@ -24,9 +24,12 @@ dbconn.connect((err) => {
     }
 });
 
+
+// Admin
+
 app.get("/admin/login", (req, res) => {
     console.log("admin login");
-    res.send("Admin login page placeholder");
+    res.send("Admin successfuly login");
 })
 
 app.get('/api/admin-get-user/:id', async (req, res) => {
@@ -40,7 +43,6 @@ app.get('/api/admin-get-user/:id', async (req, res) => {
         }
     })
 })
-
 
 app.post("/admin/login", (req, res) => {
     const { username, password } = req.body;
@@ -102,6 +104,19 @@ app.post("/admin/logout", (req, res) => {
         res.json({ success: true });
     });
 });
+
+
+// Seller
+
+app.get("/seller/login", (req, res) => {
+    console.log("seller login");
+    res.send("Seller successfully login")
+})
+
+app.get("/seller/register", (req, res) => {
+    console.log("seller register");
+    res.send("Seller successfully register")
+})
 
 app.use((req, res)=>{
     res.status(404).send("error: route not found on express serve.r");

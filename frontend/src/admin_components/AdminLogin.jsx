@@ -34,18 +34,18 @@ function Admin_login() {
     };
 
   return (
-    // Container for centering the form vertically and horizontally
+    
     <div className="container-fluid d-flex justify-content-center align-items-center">
       
-      {/* Login Card */}
+      
       <div className="admin-login-card shadow-lg p-3 mb-5 bg-white rounded" >
         <div className="card-body">
           
           <h2 className="card-title text-center mb-4">Admin Login</h2>
           
-          {/* Login Form */}
+          
           <form onSubmit={handelSubmit}>
-            {/* Email/Username Field */}
+            
             <div className="mb-3">
               <label htmlFor="userInput" className="form-label">Username : </label>
               <input 
