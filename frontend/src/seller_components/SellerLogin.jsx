@@ -7,7 +7,7 @@ function SellerLogin() {
       <div className="container-fluid d-flex justify-content-center align-items-center">
       
       
-      <div className="admin-login-card shadow-lg p-3 mb-5 bg-white rounded" >
+      <div className="seller-login-card shadow-lg p-3 mb-5 bg-white rounded" >
         <div className="card-body">
           
           <h2 className="card-title text-center mb-4">Login</h2>
@@ -16,22 +16,20 @@ function SellerLogin() {
           <form>
             
             <div className="mb-3">
-              <label htmlFor="userInput" className="form-label">Username : </label>
               <input 
                 type="text" 
                 className="form-control p-2" 
                 id="userInput" 
-                placeholder="username" name='username'
+                placeholder="Please Enter Username" name='username'
                 required
               />
             </div>
             
             <div className="mb-4">
-              <label htmlFor="passwordInput" className="form-label">Password : </label>
               <input 
                 type="password" 
                 className="form-control p-2" 
-                id="passwordInput" name='password'
+                id="passwordInput" name='password' placeholder='Please Enter Password'
                 required
               />
             </div>

@@ -9,6 +9,8 @@ import AdminOrdersList from './admin_components/AdminOrdersList'
 import AdminProductsTable from './admin_components/AdminProductsTable'
 import SellerLogin from './seller_components/SellerLogin'
 import SellerRegister from './seller_components/SellerRegister'
+import SellerDashboard from './seller_components/SellerDashboard'
+
 
 
 function App() {
@@ -29,6 +31,12 @@ function App() {
 
         <Route path='/seller/login' element={<SellerLogin />}/>
         <Route path='/seller/register' element={<SellerRegister />} />
+
+        
+
+        <Route path="/seller" element={<SellerDashboard />}>
+          <Route path="dashboard" element={<div className="h3">Welcome to the Overview</div>} />
+        </Route>
       </Routes>
     </>
   )

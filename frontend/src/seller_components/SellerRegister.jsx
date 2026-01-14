@@ -20,28 +20,23 @@ function SellerRegister() {
             
             <div className='row'>
               <div className="mb-3 col-6">
-                  <label className="form-label">Full Name</label>
-                  <input type="text" className="form-control p-2" name='name' required />
+                  <input type="text" className="form-control p-2" name='name' placeholder='Enter Full Name' required />
               </div>
 
               <div className="mb-3 col-6">
-                  <label className="form-label">Phone Number</label>
-                  <input type="text" className="form-control p-2" name='number' required />
+                  <input type="text" className="form-control p-2" placeholder='Enter Phone Number' name='number' required />
               </div>
 
               <div className="mb-3 col-6">
-                  <label className="form-label">Business Name</label>
-                  <input type="text" className="form-control p-2" name='business' required />
+                  <input type="text" className="form-control p-2" placeholder='Enter Business Name' name='business' required />
               </div>
 
               <div className="mb-3 col-6">
-                  <label className="form-label">Email Address</label>
-                  <input type="email" className="form-control p-2" name='email' required />
+                  <input type="email" className="form-control p-2" placeholder='Enter Email Address' name='email' required />
               </div>
 
               <div className="mb-4 col-6">
-                  <label className="form-label">Password</label>
-                  <input type="password" className="form-control p-2" name='password'  required />
+                  <input type="password" className="form-control p-2" placeholder='Enter Password' name='password'  required />
               </div>
 
               <div className="d-grid">
