@@ -10,6 +10,7 @@ import AdminProductsTable from './admin_components/AdminProductsTable'
 import SellerLogin from './seller_components/SellerLogin'
 import SellerRegister from './seller_components/SellerRegister'
 import SellerDashboard from './seller_components/SellerDashboard'
+import SellerProduct from './seller_components/SellerProduct'
 
 
 
@@ -36,6 +37,7 @@ function App() {
 
         <Route path="/seller" element={<SellerDashboard />}>
           <Route path="dashboard" element={<div className="h3">Welcome to the Overview</div>} />
+          <Route path='products' element={<SellerProduct />} />
         </Route>
       </Routes>
     </>

@@ -13,7 +13,7 @@ function SellerSidebar() {
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
                 <li className="nav-item">
-                <Link to="/seller/dashboard" className="nav-link active text-white">
+                <Link to="/seller/dashboard" className="nav-link text-white">
                     Dashboard
                 </Link>
                 </li>
