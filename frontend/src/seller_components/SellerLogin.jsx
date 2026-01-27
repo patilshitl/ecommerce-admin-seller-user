@@ -1,7 +1,21 @@
+import axios from 'axios';
 import React from 'react'
 import { useState } from 'react'
 
 function SellerLogin() {
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    axios.post("http://localhost:3000/seller/login", {email, password})
+    .then(res => {
+      if (res.data.Status === "Success") {
+        localStorage.setItem('id', res.data.id);
+        localStorage.setItem('username', res.data.name);
+
+        Navigate('/seller/dashboard')
+      }
+    })
+  }
   return (
     <>
       <div className="container-fluid d-flex justify-content-center align-items-center">
@@ -11,7 +25,6 @@ function SellerLogin() {
         <div className="card-body">
           
           <h2 className="card-title text-center mb-4">Login</h2>
-          
           
           <form>
             

@@ -118,6 +118,46 @@ app.get("/seller/register", (req, res) => {
     res.send("Seller successfully register")
 })
 
+app.post("/seller/register", (req, res) => {
+    const sql = "INSERT INTO seller (name, phone, business, email, password) VALUES (?)"
+
+    const values = [
+        req.body.name,
+        req.body.phone,
+        req.body.business,
+        req.body.email,
+        req.body.password 
+    ];
+
+    dbconn.query(sql, [values], (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.json({
+                Error: "Inserting data failed"
+            });
+        }
+        return res.json({Status: "Success"});
+    });
+});
+
+app.post("/seller/login", (req, res) => {
+    const sql = "Select * FROM  seller WHERE email = ? AND password = ?";
+
+    dbconn.query(sql, [req.body.email, req.body.password], (err, result) =>{
+        iff (err) return res.json({ Status: "Error", Error: "Database error" });
+
+        if (result.length > 0) {
+            return res.json({
+                Status: "Success",
+                id: result[0].id,
+                username: result[0].name
+            });
+        } else {
+            return res.json({Status: "Error", Error: "Wrong email or password" });
+        }
+    });
+});
+
 app.use((req, res)=>{
     res.status(404).send("error: route not found on express serve.r");
 });
