@@ -144,7 +144,7 @@ app.post("/seller/login", (req, res) => {
     const sql = "Select * FROM  seller WHERE email = ? AND password = ?";
 
     dbconn.query(sql, [req.body.email, req.body.password], (err, result) =>{
-        iff (err) return res.json({ Status: "Error", Error: "Database error" });
+        if (err) return res.json({ Status: "Error", Error: "Database error" });
 
         if (result.length > 0) {
             return res.json({
@@ -157,6 +157,23 @@ app.post("/seller/login", (req, res) => {
         }
     });
 });
+
+app.get("seller/dashboard/:id", (req, res) => {
+    const loggedId = req.params.id;
+    const sql = "Select * from seller Where id = ?";
+
+    dbconn.query(sql, [loggedId], (err, result) => {
+        if (err){
+            console.error(err);
+            return res.status(500).json({Error: "Database error"});
+        }
+        if(result.length > 0){
+            return res.json({Status: "Success", Data: result[0]});
+        } else {
+            return res.status(404).json({Error: "User not found"});
+        }
+    })
+})
 
 app.use((req, res)=>{
     res.status(404).send("error: route not found on express serve.r");

@@ -32,7 +32,7 @@ function App() {
         
 
         <Route path="/seller" element={<SellerDashboard />}>
-          <Route path="dashboard" element={<div className="h3">Welcome to the Overview</div>} />
+          <Route path="dashboard/:id" element={<div className="h3">Welcome to the Overview</div>} />
           <Route path='products' element={<SellerProduct />} />
         </Route>
       </Routes>
