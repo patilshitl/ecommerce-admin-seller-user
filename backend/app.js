@@ -158,7 +158,7 @@ app.post("/seller/login", (req, res) => {
     });
 });
 
-app.get("seller/dashboard/:id", (req, res) => {
+app.get("/seller/dashboard/:id", (req, res) => {
     const loggedId = req.params.id;
     const sql = "Select * from seller Where id = ?";
 
@@ -173,6 +173,10 @@ app.get("seller/dashboard/:id", (req, res) => {
             return res.status(404).json({Error: "User not found"});
         }
     })
+})
+
+app.post("/seller/logout", (req, res) => {
+    return res.json({Status: "Success", Message:"Logged out successfully"});
 })
 
 app.use((req, res)=>{

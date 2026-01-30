@@ -17,22 +17,18 @@ function App() {
     <>
       <Routes>
         <Route path="/admin/login" element={<AdminLogin/>}/>
-        {/* <Route path="/admin/dashboard" element={<AdminDashboard/>}/> */}
+        <Route path='/seller/login' element={<SellerLogin />}/>
+        <Route path='/seller/register' element={<SellerRegister />} />
 
-        {/* Child routes that show up in the <Outlet /> */}
         <Route path="/admin" element={<AdminDashboard />}>
           <Route path="dashboard"element={<div className="h3">Welcome to the Overview</div>} />
           <Route path="products" element={<AdminProductsTable />} />
           <Route path="orders" element={<AdminOrdersList />} />
-        </Route>
-
-        <Route path='/seller/login' element={<SellerLogin />}/>
-        <Route path='/seller/register' element={<SellerRegister />} />
-
-        
+        </Route>     
 
         <Route path="/seller" element={<SellerDashboard />}>
-          <Route path="dashboard/:id" element={<div className="h3">Welcome to the Overview</div>} />
+          <Route path="dashboard" element={<div className="h3">Welcome to the Overview</div>} />
+          <Route path="dashboard/:id" element={<div className="h3"></div>} />
           <Route path='products' element={<SellerProduct />} />
         </Route>
       </Routes>
