@@ -179,6 +179,17 @@ app.post("/seller/logout", (req, res) => {
     return res.json({Status: "Success", Message:"Logged out successfully"});
 })
 
+app.post("/seller/add-product", (req, res) => {
+    const { product_name, category, price, in_stock, user_id } = req.body;
+    const sql = "INSERT INTO products (product_name, category, price, in_stock, user_id) VALUES (?)";
+    const values = [product_name, category, price, in_stock, user_id];
+
+    dbconn.query(sql, [values], (err, result) => {
+        if (err) return res.json({Status: "Error", Error: err});
+        return res.json({Status: "Success"});
+    });
+});
+
 app.use((req, res)=>{
     res.status(404).send("error: route not found on express serve.r");
 });

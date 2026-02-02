@@ -27,9 +27,9 @@ function App() {
         </Route>     
 
         <Route path="/seller" element={<SellerDashboard />}>
-          <Route path="dashboard" element={<div className="h3">Welcome to the Overview</div>} />
+          {/* <Route path="dashboard" element={<div className="h3">Welcome to the Overview</div>} /> */}
           <Route path="dashboard/:id" element={<div className="h3"></div>} />
-          <Route path='products' element={<SellerProduct />} />
+          <Route path='products/:id' element={<SellerProduct />} />
         </Route>
       </Routes>
     </>

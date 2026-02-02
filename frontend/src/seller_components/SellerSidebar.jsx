@@ -45,7 +45,7 @@ function SellerSidebar() {
                 </Link>
                 </li>
                 <li>
-                <Link to="/seller/products" className="nav-link text-white">
+                <Link to={`/seller/products/${id}`} className="nav-link text-white">
                     Products
                 </Link>
                 </li>

@@ -1,11 +1,41 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 
 function SellerProduct() {
 
     const [showModal , setshowModal] = useState(false);
-
     const toggleModal = () =>  setshowModal(!showModal) ;
+    const [productValues, setProductValues] = useState({
+        product_name: '',
+        category: '',
+        price: '',
+        in_stock: ''
+    });
+
+    const handelProductInput = (e) => {
+        setProductValues(prev => ({ ...prev, [e.target.name]: e.target.value}));
+    } ;
+
+    const handelProductSubmit = (e) => {
+        e.preDefault();
+        const user_id = localStorage.getItem('id');
+
+        if(!user_id) {
+            alert("Session expired. Please login again.");
+            return;
+        }
+
+        axios.post(`http://localhost:3000/seller/add-product`, {...productValues, user_id})
+        .then(res => {
+            if (res.data.Status === "Success") {
+                alert("Product Added Successfully!");
+                toggleModal();
+                window.location.reload();
+            }
+        })
+        .catch(err => console.log(err));
+    };
 
   return (
     <>
@@ -113,23 +143,23 @@ function SellerProduct() {
                                     <button type="button" className="btn-close" onClick={toggleModal}></button>
                                 </div>
                                 <div className="modal-body">
-                                    <form>
+                                    <form id="productForm" onSubmit={handelProductSubmit}>
                                         <div className='row'>
                                             <div className="mb-3 col-6">
                                                 <label className="form-label">Product Name</label>
-                                                <input type="text" className="form-control" placeholder="Enter name" />
+                                                <input type="text" className="form-control" placeholder="Enter name" name='product_name' onChange={handelProductInput} />
                                             </div>
                                             <div className="mb-3 col-6">
                                                 <label className="form-label">Category</label>
-                                                <input type="text" className="form-control" placeholder="Enter name" />
+                                                <input type="text" className="form-control" placeholder="Enter category" name='category' onChange={handelProductInput} />
                                             </div>
                                             <div className="mb-3 col-6">
                                                 <label className="form-label">Price</label>
-                                                <input type="number" className="form-control" placeholder="0.00" />
+                                                <input type="number" className="form-control" placeholder="0.00" name='price' onChange={handelProductInput} />
                                             </div>
                                             <div className="mb-3 col-6">
                                                 <label className="form-label">Stock</label>
-                                                <input type="text" className="form-control" placeholder="Enter name" />
+                                                <input type="text" className="form-control" placeholder="Enter stock" name='in_stock' onChange={handelProductInput} />
                                             </div>
                                         </div>
                                     </form>
